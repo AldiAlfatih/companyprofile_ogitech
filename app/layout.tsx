@@ -10,25 +10,11 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 const _montserrat = Montserrat({ subsets: ["latin"], variable: '--font-montserrat' });
 
 export const metadata: Metadata = {
-  title: 'Expert-Led | Software House & Technical Collective',
-  description: 'Engineering digital excellence with precision AI & IoT architecture. A technical collective of computer science and systems information experts based in Indonesia.',
-  generator: 'v0.app',
+  title: 'OgiTech | Engineering Digital Excellence',
+  description: 'A technical collective of computer science and systems information experts based in Indonesia, specializing in precision AI & IoT architecture.',
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: '/logo_ogitech_clean.jpg',
+    apple: '/logo_ogitech_clean.jpg',
   },
 }
 

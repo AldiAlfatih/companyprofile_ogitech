@@ -10,8 +10,8 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 const _montserrat = Montserrat({ subsets: ["latin"], variable: '--font-montserrat' });
 
 export const metadata: Metadata = {
-  title: 'OgiTech | Engineering Digital Excellence',
-  description: 'A technical collective of computer science and systems information experts based in Indonesia, specializing in precision AI & IoT architecture.',
+  title: 'OgiTech | Smart Tech for Everyone',
+  description: 'Voyaging Beyond Boundaries. A technical collective of computer science and systems information experts based in Indonesia, specializing in precision AI & IoT architecture.',
   icons: {
     icon: '/logo_ogitech_clean.jpg',
     apple: '/logo_ogitech_clean.jpg',

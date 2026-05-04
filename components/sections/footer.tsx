@@ -39,6 +39,9 @@ export function FooterSection() {
             width={true}
             italic={true}
           />
+          <p className="mt-4 text-primary/60 font-medium tracking-[0.3em] uppercase text-sm sm:text-base animate-pulse">
+            Voyaging Beyond Boundaries
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-20">
@@ -66,7 +69,7 @@ export function FooterSection() {
               </div>
             </div>
             <p className="text-foreground/60 text-lg leading-relaxed">
-              Architecting the future through precision AI and IoT systems. Founded by technical pioneers from Angkatan 1 ITH.
+              A visionary technology collective dedicated to driving global digital transformation by harmonizing cultural integrity with cutting-edge innovation.
             </p>
           </div>
 

@@ -13,7 +13,7 @@ const team = [
     expertise: ['Product Design', 'UI/UX Design', 'System Analyst'],
     quote: 'Future loading... Please don&apos;t turn off the enthusiasm',
     initials: 'REP',
-    image: '/foto_ogitech/putra.png',
+    image: '/foto_ogitech/Putra_new.png',
     linkedin: '#',
   },
   {
@@ -22,7 +22,7 @@ const team = [
     expertise: ['AI Engineer', 'Mobile Development', 'Fullstack Developer'],
     quote: 'I learned that if I hesitate, I won&apos;t get anything',
     initials: 'MAA',
-    image: '/foto_ogitech/Aldi.png',
+    image: '/foto_ogitech/Aldi_new.png',
     linkedin: 'https://www.linkedin.com/in/aldialfatih/',
   },
   {
@@ -31,7 +31,7 @@ const team = [
     expertise: ['Data Analytics', 'Backend Engineer', 'Network Security'],
     quote: 'Be part of the future, not just a spectator.',
     initials: 'LH',
-    image: '/foto_ogitech/Lukman.png',
+    image: '/foto_ogitech/Lukman_new.png',
     linkedin: '#',
   },
   {
@@ -40,7 +40,7 @@ const team = [
     expertise: ['Cyber Security', 'Database Engineer', 'Cloud Infrastructure'],
     quote: 'Be someone who takes on the future, not a coward who stays safe in their comfort zone',
     initials: 'MA',
-    image: '/foto_ogitech/Anugrah.jpeg',
+    image: '/foto_ogitech/Anugrah_new.png',
     linkedin: '#',
   },
   {
@@ -49,7 +49,7 @@ const team = [
     expertise: ['Quality Assurance', 'Database Architecture', 'Business Process'],
     quote: 'What is lost today will be replaced by something better in the future',
     initials: 'MAL',
-    image: '/foto_ogitech/alfian.png',
+    image: '/foto_ogitech/Alfian_new.png',
     linkedin: '#',
   },
   {
@@ -58,7 +58,7 @@ const team = [
     expertise: ['IoT Engineer', 'Frontend Developer', 'Robotic Engineering'],
     quote: 'Keep moving forward, you don&apos;t have to be perfect.',
     initials: 'MRJ',
-    image: '/foto_ogitech/Rivaldi.png',
+    image: '/foto_ogitech/Rivaldi_new.png',
     linkedin: '#',
   },
 ]

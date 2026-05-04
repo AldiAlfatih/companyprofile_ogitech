@@ -45,16 +45,17 @@ export function Navbar() {
             <div className="flex-shrink-0 flex items-center">
               <Magnet padding={50} magnetStrength={30}>
                 <div
-                  className="relative h-12 w-12 flex items-center justify-center rounded-xl bg-white/5 border border-primary/10 p-1.5 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,214,10,0.4)]"
+                  className="relative h-16 w-16 flex items-center justify-center rounded-2xl border border-primary/30 transition-all duration-300 hover:scale-110 hover:shadow-[0_0_40px_rgba(255,214,10,0.5)] overflow-hidden"
                   style={{
-                    filter: 'drop-shadow(0 0 15px rgba(255, 214, 10, 0.8)) brightness(1.2) contrast(1.1)'
+                    background: 'linear-gradient(to bottom, #00044a 0%, #ffd60a 100%)',
+                    boxShadow: '0 0 20px rgba(0, 4, 74, 0.5), inset 0 0 10px rgba(255, 214, 10, 0.2)'
                   }}
                 >
                   <Image
                     src="/logo_ogitech_clean.jpg"
                     alt="OgiTech Logo"
                     fill
-                    className="object-contain p-0.5"
+                    className="object-contain p-1.5"
                     priority
                   />
                 </div>

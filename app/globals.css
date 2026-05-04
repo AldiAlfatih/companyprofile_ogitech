@@ -115,6 +115,19 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+@utility animate-scroll {
+  animation: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

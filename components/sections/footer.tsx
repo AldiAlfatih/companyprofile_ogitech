@@ -27,9 +27,9 @@ export function FooterSection() {
         {/* Large Branding Section */}
         <div className="text-center mb-20">
           {/* // Placeholder for "Text Pressure" or "Shiny Text" on the OgiTech footer branding */}
-          <h2 className="text-6xl sm:text-8xl lg:text-9xl font-bold text-primary/10 hover:text-primary transition-all duration-1000 cursor-default select-none tracking-tighter">
+          {/* <h2 className="text-6xl sm:text-8xl lg:text-9xl font-bold text-primary/10 hover:text-primary transition-all duration-1000 cursor-default select-none tracking-tighter">
             OgiTech
-          </h2>
+          </h2> */}
           <TextPressure
             text="OgiTech"
             textColor="var(--primary)"

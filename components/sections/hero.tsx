@@ -17,7 +17,7 @@ export function HeroSection() {
             trailSize={0.15}
             maxAge={400}
             interpolate={10}
-            color="rgba(255, 214, 10, 0.4)"
+            color="#ffd60a"
             gooeyFilter={{ id: "hero-pixel-trail", strength: 3 }}
           />
         </div>

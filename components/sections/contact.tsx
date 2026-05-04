@@ -43,14 +43,37 @@ export function ContactSection() {
   async function onSubmit(data: ContactFormData) {
     setIsSubmitting(true)
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      // Updated with the real Formspree ID for ogitechofficial@gmail.com
+      const formId = 'mzdoeeyk' 
+      
+      const response = await fetch(`https://formspree.io/f/${formId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(data),
+      })
 
-      console.log('Form data:', data)
-      toast.success('Thank you! We&apos;ll review your project details and get back to you soon.')
-      form.reset()
+      if (response.ok) {
+        toast.success('Success! Your project details have been sent.')
+        form.reset()
+      } else {
+        // Fallback to mailto if Formspree ID is invalid or not yet verified
+        const subject = encodeURIComponent(`Project Inquiry: ${data.name}`)
+        const body = encodeURIComponent(
+          `Name: ${data.name}\n` +
+          `Email: ${data.email}\n\n` +
+          `Project Scope:\n${data.projectScope}\n\n` +
+          `Technical Requirements:\n${data.technicalRequirements}`
+        )
+        window.location.href = `mailto:ogitechofficial@gmail.com?subject=${subject}&body=${body}`
+        
+        toast.info('Opening your email client to send the message...')
+      }
     } catch (error) {
-      toast.error('Something went wrong. Please try again.')
+      console.error('Submission error:', error)
+      toast.error('Could not connect to the server. Please try again or email us directly.')
     } finally {
       setIsSubmitting(false)
     }

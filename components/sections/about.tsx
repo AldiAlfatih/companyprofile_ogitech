@@ -7,7 +7,7 @@ import { TracingBeam } from '../ui/tracing-beam'
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-20 sm:py-32 bg-background px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-20 sm:py-32 bg-background px-4 sm:px-6 lg:px-8 relative">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Column - Narrative */}

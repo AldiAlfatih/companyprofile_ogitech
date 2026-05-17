@@ -5,136 +5,154 @@ import {
   Brain,
   Shield,
   Zap,
-  BarChart3,
+  Smartphone,
   Palette,
-  CheckCircle2,
+  ClipboardList,
 } from 'lucide-react'
-import { AnimatePresence, motion } from 'motion/react'
-import ShinyText from '../ui/ShinyText/ShinyText'
-import SpotlightCard from '../ui/SpotlightCard/SpotlightCard'
+import { motion } from 'motion/react'
 import SplitText from '../ui/SplitText/SplitText'
-import { CanvasRevealEffect } from '../ui/canvas-reveal-effect'
 
 const services = [
   {
     icon: Brain,
     title: 'AI Engineering',
-    description: 'Machine learning models and intelligent systems tailored to your business needs.',
-    colors: [[255, 214, 10], [0, 4, 74]], // Gold and Navy
+    description: 'ML models & intelligent systems tailored to your business needs.',
+    accent: '#ffd60a',
+    iconBg: 'bg-yellow-500/10',
+    iconColor: 'text-yellow-400',
+    border: 'hover:border-yellow-500/40',
   },
   {
     icon: Shield,
     title: 'Cyber Security',
     description: 'Comprehensive security solutions to protect your digital assets.',
-    colors: [[0, 255, 255], [0, 4, 74]], // Cyan and Navy
+    accent: '#00d4ff',
+    iconBg: 'bg-cyan-500/10',
+    iconColor: 'text-cyan-400',
+    border: 'hover:border-cyan-500/40',
   },
   {
     icon: Zap,
     title: 'IoT & Robotics',
-    description: 'Connected devices and autonomous systems for modern operations.',
-    colors: [[255, 214, 10]], // Gold
+    description: 'Connected devices & autonomous systems for modern operations.',
+    accent: '#22c55e',
+    iconBg: 'bg-green-500/10',
+    iconColor: 'text-green-400',
+    border: 'hover:border-green-500/40',
   },
   {
-    icon: BarChart3,
-    title: 'Data Analytics',
-    description: 'Transform raw data into actionable insights for strategic decisions.',
-    colors: [[0, 255, 255]], // Cyan
+    icon: Smartphone,
+    title: 'Web & Mobile Deployment',
+    description: 'Fast & reliable development and deployment of web and mobile apps.',
+    accent: '#f43f5e',
+    iconBg: 'bg-rose-500/10',
+    iconColor: 'text-rose-400',
+    border: 'hover:border-rose-500/40',
   },
   {
     icon: Palette,
-    title: 'Product Design',
-    description: 'User-centric design and development of digital products.',
-    colors: [[255, 214, 10], [255, 255, 255]], // Gold and White
+    title: 'UI/UX Design',
+    description: 'Intuitive and aesthetic interface & user experience design.',
+    accent: '#a855f7',
+    iconBg: 'bg-purple-500/10',
+    iconColor: 'text-purple-400',
+    border: 'hover:border-purple-500/40',
   },
   {
-    icon: CheckCircle2,
-    title: 'Quality Assurance',
-    description: 'Rigorous testing and quality protocols for reliable software.',
-    colors: [[0, 255, 255], [255, 255, 255]], // Cyan and White
+    icon: ClipboardList,
+    title: 'System Analytics',
+    description: 'System requirements analysis & architectural solution design.',
+    accent: '#f97316',
+    iconBg: 'bg-orange-500/10',
+    iconColor: 'text-orange-400',
+    border: 'hover:border-orange-500/40',
   },
 ]
 
-function ServiceCard({ service, span }: { service: typeof services[0], span: string }) {
-  const [hovered, setHovered] = useState(false)
-  const Icon = service.icon
-
-  return (
-    <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className={`relative ${span} group`}
-    >
-      <SpotlightCard
-        className="h-full group relative p-8 bg-card/40 backdrop-blur-sm border border-primary/10 rounded-2xl hover:border-primary/40 transition-all duration-500 overflow-hidden"
-        spotlightColor="rgba(255, 214, 10, 0.15)"
-      >
-        <AnimatePresence>
-          {hovered && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="h-full w-full absolute inset-0 z-0"
-            >
-              <CanvasRevealEffect
-                animationSpeed={3}
-                containerClassName="bg-transparent"
-                colors={service.colors}
-                dotSize={2}
-              />
-              {/* Radial mask for a cleaner fade */}
-              <div className="absolute inset-0 bg-background/60 backdrop-blur-[1px]" />
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        <div className="relative z-10">
-          <div className="mb-6">
-            <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-              <Icon className="w-8 h-8 text-primary group-hover:scale-110 transition-transform" />
-            </div>
-          </div>
-          <h3 className="text-2xl font-bold text-foreground mb-4">
-            <ShinyText text={service.title} color="var(--foreground)" shineColor="var(--primary)" speed={3} />
-          </h3>
-          <p className="text-foreground/70 leading-relaxed text-lg group-hover:text-foreground transition-colors">
-            {service.description}
-          </p>
-        </div>
-      </SpotlightCard>
-    </div>
-  )
-}
-
 export function ServicesSection() {
-  const spans = [
-    "md:col-span-4 md:row-span-2", // AI Engineering
-    "md:col-span-2 md:row-span-2", // Cyber Security
-    "md:col-span-3 md:row-span-1", // IoT & Robotics
-    "md:col-span-3 md:row-span-1", // Data Analytics
-    "md:col-span-2 md:row-span-1", // Product Design
-    "md:col-span-4 md:row-span-1", // Quality Assurance
-  ]
+  const [hovered, setHovered] = useState<number | null>(null)
 
   return (
     <section
       id="services"
-      className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-background"
+      className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-background relative"
     >
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-foreground">
-            <SplitText text="Our Expertise" delay={0.08} />
+      {/* Background glow */}
+      <div className="absolute bottom-0 right-0 w-[500px] h-[300px] bg-primary/5 blur-[100px] rounded-full pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header */}
+        <div className="text-center mb-14">
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-block text-primary text-xs font-bold tracking-[0.25em] uppercase mb-4 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5"
+          >
+            What We Do
+          </motion.span>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-3 text-foreground">
+            <SplitText text="Our Services" delay={0.08} />
           </h2>
-          <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-            Six pillars of technical excellence delivered by our specialized team.
+          <p className="text-base text-foreground/60 max-w-lg mx-auto">
+            Six pillars of technical excellence delivered by our specialist team.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
-          {services.map((service, idx) => (
-            <ServiceCard key={idx} service={service} span={spans[idx]} />
-          ))}
+        {/* Service Cards Grid — compact & clean */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {services.map((service, idx) => {
+            const Icon = service.icon
+            const isHovered = hovered === idx
+
+            return (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.45, delay: idx * 0.07 }}
+                onMouseEnter={() => setHovered(idx)}
+                onMouseLeave={() => setHovered(null)}
+                className={`group relative p-6 bg-card/40 backdrop-blur-sm border border-primary/10 rounded-2xl ${service.border} transition-all duration-400 hover:shadow-xl cursor-default`}
+                style={{
+                  boxShadow: isHovered ? `0 8px 40px ${service.accent}18` : undefined,
+                }}
+              >
+                {/* Hover gradient tint */}
+                <div
+                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{ background: `radial-gradient(ellipse at top left, ${service.accent}10 0%, transparent 65%)` }}
+                />
+
+                <div className="relative z-10 flex items-start gap-4">
+                  {/* Icon */}
+                  <div
+                    className={`flex-shrink-0 w-11 h-11 rounded-xl ${service.iconBg} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+                    style={{ boxShadow: isHovered ? `0 0 20px ${service.accent}25` : undefined }}
+                  >
+                    <Icon className={`w-5 h-5 ${service.iconColor}`} />
+                  </div>
+
+                  {/* Text */}
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-base font-bold text-foreground mb-1 group-hover:text-white transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-sm text-foreground/55 leading-relaxed group-hover:text-foreground/75 transition-colors">
+                      {service.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Bottom accent line */}
+                <div
+                  className="absolute bottom-0 left-6 right-6 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{ background: `linear-gradient(to right, transparent, ${service.accent}50, transparent)` }}
+                />
+              </motion.div>
+            )
+          })}
         </div>
       </div>
     </section>

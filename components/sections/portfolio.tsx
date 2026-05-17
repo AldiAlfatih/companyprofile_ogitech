@@ -1,124 +1,222 @@
 'use client'
 
-import React, { useState } from 'react'
-import { InfiniteMovingCards } from '@/components/ui/infinite-moving-cards'
-import { motion, AnimatePresence } from 'motion/react'
-import { X } from 'lucide-react'
+import React from 'react'
+import { motion } from 'motion/react'
+import { Leaf, Landmark, HandMetal, TrafficCone, Building2, MapPin, ExternalLink } from 'lucide-react'
 import SplitText from '../ui/SplitText/SplitText'
+import SpotlightCard from '../ui/SpotlightCard/SpotlightCard'
 
 const ogiProjects = [
   {
-    title: "Stunting Risk Prediction",
-    category: "AI & Health",
-    description: "Sistem cerdas berbasis SARIMAX, LSTM, dan GRU untuk memprediksi risiko stunting pada balita dengan akurasi tinggi sebagai proyek tugas akhir di ITH.",
-    tech: ["Python", "LSTM", "Hugging Face", "React"],
+    icon: Leaf,
+    title: 'Hijau Hub',
+    category: 'Environmental App',
+    shortDesc: 'A smart green platform connecting eco-conscious communities and sustainability initiatives.',
+    description: 'Hijau Hub is a digital platform designed to bridge environmental communities, track sustainability progress, and promote green living initiatives across Indonesia.',
+    tech: ['CI3', 'MySQL', 'Bootstrap'],
+    gradient: 'from-yellow-500/20 via-amber-400/10 to-transparent',
+    accent: '#ffd60a',
+    border: 'border-yellow-500/30',
+    glow: 'hover:shadow-yellow-500/20',
+    iconColor: 'text-yellow-400',
+    iconBg: 'bg-yellow-500/10',
+    badge: 'Green Tech',
+    link: 'https://drive.google.com/file/d/1HuGOIuJRfdPVt7YfRFAVECqCexrJSArJ/view?usp=sharing',
   },
   {
-    title: "ISARA Sign Language",
-    category: "Deep Learning",
-    description: "Penerjemah bahasa isyarat BISINDO secara real-time menggunakan Computer Vision untuk membantu komunikasi teman tuli di Indonesia.",
-    tech: ["YOLOv8", "TensorFlow", "React Native"],
+    icon: Landmark,
+    title: 'Sistem Keuangan KI',
+    category: 'Finance System',
+    shortDesc: 'A comprehensive financial management system built for KI organization operations.',
+    description: 'An integrated financial management system for the KI organization, covering budgeting, transaction tracking, reporting, and financial oversight in a streamlined dashboard.',
+    tech: ['Laravel', 'MySQL', 'Vue.js', 'Chart.js'],
+    gradient: 'from-amber-500/20 via-yellow-400/10 to-transparent',
+    accent: '#f59e0b',
+    border: 'border-amber-500/30',
+    glow: 'hover:shadow-amber-500/20',
+    iconColor: 'text-amber-400',
+    iconBg: 'bg-amber-500/10',
+    badge: 'Fintech',
+    link: 'https://drive.google.com/file/d/10HGSje36wUB61xMnVNkdzSmijtosfkga/view?usp=sharing',
   },
   {
-    title: "Magnetic Bird Repeller",
-    category: "IoT Engineering",
-    description: "Alat pemantik api magnetik otomatis berbasis ESP32 untuk mengusir hama burung pada lahan pertanian secara efisien.",
-    tech: ["ESP32", "IoT", "C++", "Sensors"],
+    icon: HandMetal,
+    title: 'ISARA',
+    category: 'Deep Learning',
+    shortDesc: 'Real-time BISINDO sign language translator powered by Computer Vision.',
+    description: 'A real-time BISINDO sign language translator using Computer Vision and YOLOv8 to bridge communication for the deaf community in Indonesia.',
+    tech: ['Laravel', 'PostgreSQL', 'React.js', 'Python'],
+    gradient: 'from-yellow-400/20 via-amber-500/10 to-transparent',
+    accent: '#ffd60a',
+    border: 'border-yellow-400/30',
+    glow: 'hover:shadow-yellow-400/20',
+    iconColor: 'text-yellow-300',
+    iconBg: 'bg-yellow-400/10',
+    badge: 'AI & CV',
+    link: 'https://drive.google.com/file/d/1svYq39wC3I9DJXqBuyI_xWUNENqY0-Uv/view?usp=sharing',
   },
   {
-    title: "OgiTech Profile",
-    category: "Fullstack Web",
-    description: "Website company profile premium dengan interaksi tingkat tinggi menggunakan React Bits dan Aceternity UI untuk branding software house.",
-    tech: ["Next.js", "Tailwind CSS", "Framer Motion"],
+    icon: TrafficCone,
+    title: 'Lampu Lalu Lintas',
+    category: 'IoT Engineering',
+    shortDesc: 'Intelligent adaptive traffic light system using IoT sensors and real-time control.',
+    description: 'An IoT-based adaptive traffic light management system that uses real-time sensor data to dynamically optimize traffic flow and reduce congestion at intersections.',
+    tech: ['ESP32', 'IoT', 'C++', 'MQTT', 'Dashboard'],
+    gradient: 'from-amber-400/20 via-yellow-500/10 to-transparent',
+    accent: '#f59e0b',
+    border: 'border-amber-400/30',
+    glow: 'hover:shadow-amber-400/20',
+    iconColor: 'text-amber-300',
+    iconBg: 'bg-amber-400/10',
+    badge: 'IoT',
+    link: 'https://drive.google.com/file/d/1b8lyPh32ngNo0QFFwF5r777SffK97y_f/view?usp=sharing',
+  },
+  {
+    icon: Building2,
+    title: 'BAPPEDA',
+    category: 'Government System',
+    shortDesc: 'Regional development planning information system for local government.',
+    description: 'A digital information system for BAPPEDA (Regional Development Planning Agency) to manage, monitor, and report development programs across government sectors efficiently.',
+    tech: ['Laravel', 'Vue.js', 'MySQL', 'Inertia.js'],
+    gradient: 'from-yellow-500/25 via-amber-400/10 to-transparent',
+    accent: '#ffd60a',
+    border: 'border-yellow-500/30',
+    glow: 'hover:shadow-yellow-500/20',
+    iconColor: 'text-yellow-400',
+    iconBg: 'bg-yellow-500/10',
+    badge: 'GovTech',
+    link: 'https://drive.google.com/file/d/1ta-oW511dLGjrGzgd4UKkkE03TBR00pH/view?usp=sharing',
+  },
+  {
+    icon: MapPin,
+    title: 'LAGOTA',
+    category: 'Local App',
+    shortDesc: 'A community-driven local services and discovery platform.',
+    description: 'LAGOTA is a local community platform designed to connect residents with nearby services, events, and information, empowering local neighborhoods through digital access.',
+    tech: ['Laravel', 'Vue.js', 'Inertia.js', 'MySQL'],
+    gradient: 'from-amber-500/25 via-yellow-500/10 to-transparent',
+    accent: '#f59e0b',
+    border: 'border-amber-500/30',
+    glow: 'hover:shadow-amber-500/20',
+    iconColor: 'text-amber-400',
+    iconBg: 'bg-amber-500/10',
+    badge: 'Mobile',
+    link: 'https://drive.google.com/file/d/1ta-oW511dLGjrGzgd4UKkkE03TBR00pH/view?usp=sharing',
   },
 ]
 
+
 export function PortfolioSection() {
-  const [selectedProject, setSelectedProject] = useState<any>(null)
 
   return (
     <section id="portfolio" className="py-20 sm:py-32 bg-background relative overflow-hidden px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-16 sm:mb-20 text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6 tracking-tight">
-            <SplitText text="Our Innovation Gallery" delay={0.08} />
+      {/* Subtle background glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Section Header */}
+        <div className="mb-14 sm:mb-20 text-center">
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-block text-primary text-xs font-bold tracking-[0.25em] uppercase mb-4 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5"
+          >
+            Our Work
+          </motion.span>
+          <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4 tracking-tight">
+            <SplitText text="Featured Projects" delay={0.08} />
           </h2>
-          <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-            A selection of technical breakthroughs and real-world solutions developed by our specialized team.
+          <p className="text-lg text-foreground/60 max-w-xl mx-auto">
+            Real solutions we've built — from AI to IoT, from web to mobile.
           </p>
         </div>
 
-        <div className="flex flex-col items-center justify-center">
-          <InfiniteMovingCards
-            items={ogiProjects}
-            direction="left"
-            speed="slow"
-            onItemClick={(project) => setSelectedProject(project)}
-          />
+        {/* Project Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {ogiProjects.map((project, idx) => {
+            const Icon = project.icon
+            return (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                className="group"
+              >
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block h-full"
+                >
+                <SpotlightCard
+                  className={`cursor-pointer h-full p-7 bg-card/40 backdrop-blur-sm border ${project.border} rounded-2xl hover:border-opacity-60 transition-all duration-500 hover:shadow-2xl ${project.glow} relative overflow-hidden`}
+                  spotlightColor={`${project.accent}22`}
+                >
+                  {/* Gradient Background */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} />
+
+                  <div className="relative z-10 h-full flex flex-col">
+                    {/* Top row: Icon + Badge */}
+                    <div className="flex items-start justify-between mb-5">
+                      <div
+                        className={`w-12 h-12 rounded-xl ${project.iconBg} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+                        style={{ boxShadow: `0 0 20px ${project.accent}20` }}
+                      >
+                        <Icon className={`w-6 h-6 ${project.iconColor}`} />
+                      </div>
+                      <span className="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-foreground/50">
+                        {project.badge}
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-white transition-colors">
+                      {project.title}
+                    </h3>
+
+                    {/* Short description */}
+                    <p className="text-sm text-foreground/60 leading-relaxed mb-5 flex-grow group-hover:text-foreground/80 transition-colors">
+                      {project.shortDesc}
+                    </p>
+
+                    {/* Tech tags */}
+                    <div className="flex flex-wrap gap-2 mb-5">
+                      {project.tech.slice(0, 3).map((t) => (
+                        <span
+                          key={t}
+                          className="text-[11px] px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-foreground/60 font-medium"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                      {project.tech.length > 3 && (
+                        <span className="text-[11px] px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-foreground/40">
+                          +{project.tech.length - 3}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* CTA Row */}
+                    <div className="flex items-center justify-between pt-4 border-t border-white/5">
+                      <span className="text-xs text-foreground/40 font-medium">{project.category}</span>
+                      <span
+                        className="flex items-center gap-1.5 text-xs font-semibold transition-all duration-300"
+                        style={{ color: project.accent }}
+                      >
+                        View PDF <ExternalLink className="w-3 h-3" />
+                      </span>
+                    </div>
+                  </div>
+                </SpotlightCard>
+                </a>
+              </motion.div>
+            )
+          })}
         </div>
       </div>
-
-      {/* MODAL POP-UP */}
-      <AnimatePresence>
-        {selectedProject && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-            {/* Background Overlay */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedProject(null)}
-              className="absolute inset-0 bg-black/90 backdrop-blur-md"
-            />
-            
-            {/* Modal Content */}
-            <motion.div 
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              className="relative w-full max-w-2xl bg-card border border-primary p-8 sm:p-12 rounded-3xl shadow-[0_0_50px_rgba(255,214,10,0.2)] overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 p-6">
-                <button 
-                  onClick={() => setSelectedProject(null)}
-                  className="text-primary hover:rotate-90 transition-transform p-2 bg-primary/10 rounded-full"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-              </div>
-              
-              <div className="relative z-10">
-                <span className="text-primary font-mono text-sm tracking-widest uppercase mb-4 block">
-                  {selectedProject.category}
-                </span>
-                <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2 mb-6">
-                  {selectedProject.title}
-                </h2>
-                <p className="text-gray-300 text-lg leading-relaxed mb-10">
-                  {selectedProject.description}
-                </p>
-                
-                <div className="space-y-6">
-                  <h4 className="text-primary text-xs font-bold uppercase tracking-wider">Technologies & Tools</h4>
-                  <div className="flex flex-wrap gap-3">
-                    {selectedProject.tech.map((t: string) => (
-                      <span 
-                        key={t} 
-                        className="px-4 py-2 rounded-xl bg-primary/5 border border-primary/20 text-sm text-white/90 font-medium"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Decorative accent */}
-              <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-primary/10 blur-[80px] rounded-full"></div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
     </section>
   )
 }

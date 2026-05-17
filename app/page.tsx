@@ -15,16 +15,25 @@ export default function Home() {
     <>
       <Navbar />
       <main className="min-h-screen">
+        {/* 1. Hero — Kesan pertama */}
         <div id="home">
           <HeroSection />
         </div>
-        <AboutSection />
-        <ServicesSection />
+        {/* 2. Portfolio — Tunjukkan karya nyata */}
         <PortfolioSection />
+        {/* 3. Services — Layanan singkat & padat */}
+        <ServicesSection />
+        {/* 4. Process — Alur kerja */}
         <ProcessSection />
+        {/* 5. Team — Tim kami */}
         <TeamSection />
+        {/* 6. Tech Stack — Teknologi */}
         <TechStackSection />
+        {/* 7. Contact — Mulai proyek */}
         <ContactSection />
+        {/* 8. OGITECH Story — Penutup perjalanan */}
+        <AboutSection />
+        {/* 9. Footer */}
         <FooterSection />
         <Toaster position="top-center" />
       </main>

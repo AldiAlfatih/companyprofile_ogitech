@@ -9,12 +9,11 @@ import Magnet from './ui/Magnet/Magnet'
 
 const navItems = [
   { label: 'Home', href: '#home' },
-  { label: 'About Us', href: '#about' },
+  { label: 'Projects', href: '#portfolio' },
   { label: 'Services', href: '#services' },
-  { label: 'Portfolio', href: '#portfolio' },
-  { label: 'Process', href: '#process' },
   { label: 'Team', href: '#team' },
   { label: 'Contact', href: '#contact' },
+  { label: 'Story', href: '#about' },
 ]
 
 export function Navbar() {

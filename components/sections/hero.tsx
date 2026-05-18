@@ -29,7 +29,7 @@ export function HeroSection() {
             <p className="text-primary text-sm sm:text-base font-semibold tracking-[0.2em] uppercase mb-2 opacity-80">
               Welcome to
             </p>
-            <div className="relative h-10 sm:h-12 mb-2 w-full max-w-[250px] sm:max-w-[350px] mx-auto">
+            <div className="relative h-12 sm:h-16 mb-4 sm:mb-6 w-full max-w-[250px] sm:max-w-[350px] mx-auto">
               <TextPressure
                 text="OgiTech"
                 textColor="var(--primary)"

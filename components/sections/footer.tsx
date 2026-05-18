@@ -31,15 +31,17 @@ export function FooterSection() {
           {/* <h2 className="text-6xl sm:text-8xl lg:text-9xl font-bold text-primary/10 hover:text-primary transition-all duration-1000 cursor-default select-none tracking-tighter">
             OgiTech
           </h2> */}
-          <TextPressure
-            text="OgiTech"
-            textColor="var(--primary)"
-            minFontSize={72}
-            flex={true}
-            weight={true}
-            width={true}
-            italic={true}
-          />
+          <div className="relative h-20 sm:h-32 lg:h-48 w-full max-w-[400px] sm:max-w-[700px] lg:max-w-[1000px] mx-auto mb-6">
+            <TextPressure
+              text="OgiTech"
+              textColor="var(--primary)"
+              minFontSize={72}
+              flex={true}
+              weight={true}
+              width={true}
+              italic={true}
+            />
+          </div>
           <p className="mt-4 text-primary/60 font-medium tracking-[0.3em] uppercase text-sm sm:text-base animate-pulse">
             Voyaging Beyond Boundaries
           </p>

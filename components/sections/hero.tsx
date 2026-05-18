@@ -29,51 +29,23 @@ export function HeroSection() {
             <p className="text-primary text-sm sm:text-base font-semibold tracking-[0.2em] uppercase mb-2 opacity-80">
               Welcome to
             </p>
-            <div className="flex items-center justify-center gap-4 mb-4 sm:mb-6 w-full max-w-lg mx-auto">
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                className="relative w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-primary shadow-lg shadow-primary/30 shrink-0"
-              >
-                <Image
-                  src="/jilat.png"
-                  alt="Jilat"
-                  fill
-                  sizes="64px"
-                  className="object-cover"
-                />
-              </motion.div>
-              <div className="relative h-12 sm:h-16 w-full max-w-[250px] sm:max-w-[350px]">
-                <TextPressure
-                  text="OgiTech"
-                  textColor="var(--primary)"
-                  minFontSize={28}
-                  flex={true}
-                  weight={true}
-                  width={true}
-                  italic={false}
-                  scale={false}
-                />
-              </div>
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
-                className="relative w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-primary shadow-lg shadow-primary/30 shrink-0"
-              >
-                <Image
-                  src="/bori.png"
-                  alt="Bori"
-                  fill
-                  sizes="64px"
-                  className="object-cover"
-                />
-              </motion.div>
+            <div className="relative h-12 sm:h-16 mb-4 sm:mb-6 w-full max-w-[250px] sm:max-w-[350px] mx-auto">
+              <TextPressure
+                text="OgiTech"
+                textColor="var(--primary)"
+                minFontSize={28}
+                flex={true}
+                weight={true}
+                width={true}
+                italic={false}
+                scale={false}
+              />
             </div>
             <div className="h-1 w-16 bg-gradient-to-r from-primary/60 to-accent/60 mx-auto rounded-full"></div>
           </motion.div>
 
           {/* Headline */}
-          <div className="relative text-3xl sm:text-4xl lg:text-5xl font-extrabold text-balance leading-[1.1] mb-6 flex flex-wrap justify-center text-white tracking-tight w-full">
+          <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-balance leading-[1.1] mb-6 flex flex-wrap justify-center text-white tracking-tight">
             <BlurText
               text="Engineering Digital Excellence with Precision AI &"
               delay={100}
@@ -90,36 +62,6 @@ export function HeroSection() {
                 className="inline-flex"
               />
             </span>
-
-            {/* New floating sticker on the left margin (opposite to sea sticker) */}
-            <motion.div
-              animate={{ y: [0, 12, 0], rotate: [0, -4, 2, 0] }}
-              transition={{ repeat: Infinity, duration: 5.2, ease: "easeInOut" }}
-              className="absolute left-[-10px] lg:left-[-60px] top-[40%] -translate-y-1/2 hidden md:block w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full overflow-hidden border-2 border-primary shadow-lg shadow-primary/30 shrink-0"
-            >
-              <Image
-                src="/melet.png"
-                alt="Melet"
-                fill
-                sizes="(max-width: 1024px) 96px, 112px"
-                className="object-cover"
-              />
-            </motion.div>
-
-            {/* Giant floating sunset sticker on the right margin */}
-            <motion.div
-              animate={{ y: [0, -12, 0], rotate: [0, 4, -2, 0] }}
-              transition={{ repeat: Infinity, duration: 4.8, ease: "easeInOut" }}
-              className="absolute right-[-10px] lg:right-[-60px] top-[40%] -translate-y-1/2 hidden md:block w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full overflow-hidden border-2 border-primary shadow-lg shadow-primary/30 shrink-0"
-            >
-              <Image
-                src="/sea.png"
-                alt="Sea"
-                fill
-                sizes="(max-width: 1024px) 96px, 112px"
-                className="object-cover"
-              />
-            </motion.div>
           </div>
 
           <p className="text-lg sm:text-xl text-primary font-semibold mb-2 tracking-tight">

@@ -1,7 +1,6 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import PixelTrail from '../ui/PixelTrail/PixelTrail'
 import TextPressure from '../ui/TextPressure/TextPressure'
 import BlurText from '../ui/BlurText/BlurText'
 import { AuroraBackground } from '../ui/aurora-background'
@@ -16,17 +15,7 @@ export function HeroSection() {
   return (
     <section id="home" className="relative min-h-screen bg-background">
       <AuroraBackground className="flex-col pt-24 pb-0 sm:pt-32">
-        {/* Background Effect Overlay */}
-        <div className="absolute inset-0 z-0 opacity-40">
-          <PixelTrail
-            gridSize={60}
-            trailSize={0.15}
-            maxAge={400}
-            interpolate={10}
-            color="#ffd60a"
-            gooeyFilter={{ id: "hero-pixel-trail", strength: 3 }}
-          />
-        </div>
+
 
         <div className="relative z-10 max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
           {/* Brand Identity */}
@@ -94,7 +83,7 @@ export function HeroSection() {
               className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-8 h-12 text-base shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-105 transition-all duration-300"
               onClick={() => scrollTo('portfolio')}
             >
-              🚀 View Projects
+              View Projects
             </Button>
 
             {/* Secondary: Get Started */}
@@ -103,7 +92,7 @@ export function HeroSection() {
               className="bg-white/10 hover:bg-white/20 text-white font-bold px-8 h-12 text-base backdrop-blur-sm border border-white/20 hover:border-primary/60 hover:scale-105 transition-all duration-300"
               onClick={() => scrollTo('contact')}
             >
-              ✉️ Get Started
+              Get Started
             </Button>
 
             {/* Tertiary: Our Story */}

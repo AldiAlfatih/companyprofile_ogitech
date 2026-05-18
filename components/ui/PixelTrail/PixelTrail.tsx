@@ -60,7 +60,7 @@ const DotMaterial = shaderMaterial(
 
       float trail = texture2D(mouseTrail, gridUvCenter).r;
 
-      gl_FragColor = vec4(pixelColor, trail);
+      gl_FragColor = vec4(pixelColor * trail, trail);
     }
   `
 );
@@ -151,6 +151,7 @@ export default function PixelTrail({
       <Canvas
         {...canvasProps}
         gl={glProps}
+        frameloop="demand"
         className={`pixel-canvas ${className}`}
         style={gooeyFilter ? { filter: `url(#${gooeyFilter.id})` } : {}}
       >

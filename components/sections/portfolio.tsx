@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import Image from 'next/image'
 import { motion } from 'motion/react'
 import { Leaf, Landmark, HandMetal, TrafficCone, Building2, MapPin, ExternalLink } from 'lucide-react'
 import SplitText from '../ui/SplitText/SplitText'
@@ -20,7 +21,8 @@ const ogiProjects = [
     glow: 'hover:shadow-yellow-500/20',
     iconColor: 'text-yellow-400',
     iconBg: 'bg-yellow-500/10',
-    badge: 'Green Tech',
+    badge: 'Green E-Commerce',
+    image: '/projek/hijauhub.png',
     link: 'https://drive.google.com/file/d/1HuGOIuJRfdPVt7YfRFAVECqCexrJSArJ/view?usp=sharing',
   },
   {
@@ -37,6 +39,7 @@ const ogiProjects = [
     iconColor: 'text-amber-400',
     iconBg: 'bg-amber-500/10',
     badge: 'Fintech',
+    image: '/projek/kalla.png',
     link: 'https://drive.google.com/file/d/10HGSje36wUB61xMnVNkdzSmijtosfkga/view?usp=sharing',
   },
   {
@@ -45,14 +48,15 @@ const ogiProjects = [
     category: 'Deep Learning',
     shortDesc: 'Real-time BISINDO sign language translator powered by Computer Vision.',
     description: 'A real-time BISINDO sign language translator using Computer Vision and YOLOv8 to bridge communication for the deaf community in Indonesia.',
-    tech: ['Laravel', 'PostgreSQL', 'React.js', 'Python'],
+    tech: ['Flutter', 'Python', 'Mediapipes', 'Tensorflow', 'Computer Vision', 'NLP', 'Supabase'],
     gradient: 'from-yellow-400/20 via-amber-500/10 to-transparent',
     accent: '#ffd60a',
     border: 'border-yellow-400/30',
     glow: 'hover:shadow-yellow-400/20',
     iconColor: 'text-yellow-300',
     iconBg: 'bg-yellow-400/10',
-    badge: 'AI & CV',
+    badge: 'AI & Mobile',
+    image: '/projek/isara.jpg',
     link: 'https://drive.google.com/file/d/1svYq39wC3I9DJXqBuyI_xWUNENqY0-Uv/view?usp=sharing',
   },
   {
@@ -68,7 +72,8 @@ const ogiProjects = [
     glow: 'hover:shadow-amber-400/20',
     iconColor: 'text-amber-300',
     iconBg: 'bg-amber-400/10',
-    badge: 'IoT',
+    badge: 'IoT & AI',
+    image: '/projek/traffic.png',
     link: 'https://drive.google.com/file/d/1b8lyPh32ngNo0QFFwF5r777SffK97y_f/view?usp=sharing',
   },
   {
@@ -85,6 +90,7 @@ const ogiProjects = [
     iconColor: 'text-yellow-400',
     iconBg: 'bg-yellow-500/10',
     badge: 'GovTech',
+    image: '/projek/bappeda.png',
     link: 'https://drive.google.com/file/d/1u8bygkt65VSuo-n6w4GH8XTgbL_AjNCk/view?usp=sharing',
   },
   {
@@ -100,7 +106,8 @@ const ogiProjects = [
     glow: 'hover:shadow-amber-500/20',
     iconColor: 'text-amber-400',
     iconBg: 'bg-amber-500/10',
-    badge: 'Mobile',
+    badge: 'F&B E-commerce',
+    image: '/projek/lagota.png',
     link: 'https://drive.google.com/file/d/1ta-oW511dLGjrGzgd4UKkkE03TBR00pH/view?usp=sharing',
   },
 ]
@@ -159,23 +166,35 @@ export function PortfolioSection() {
                   <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} />
 
                   <div className="relative z-10 h-full flex flex-col">
-                    {/* Top row: Icon + Badge */}
-                    <div className="flex items-start justify-between mb-5">
-                      <div
-                        className={`w-12 h-12 rounded-xl ${project.iconBg} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
-                        style={{ boxShadow: `0 0 20px ${project.accent}20` }}
-                      >
-                        <Icon className={`w-6 h-6 ${project.iconColor}`} />
+                    {/* Image Header */}
+                    <div className="relative w-full h-48 sm:h-52 -mx-7 -mt-7 mb-6 overflow-hidden rounded-t-2xl border-b border-primary/10">
+                      <Image 
+                        src={project.image} 
+                        alt={project.title} 
+                        fill 
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100" 
+                      />
+                      {/* Overlays for depth and text readability */}
+                      <div className={`absolute inset-0 bg-gradient-to-t ${project.gradient} opacity-50 mix-blend-multiply`} />
+                      <div className="absolute inset-0 bg-gradient-to-t from-card/95 via-card/50 to-transparent" />
+                      
+                      {/* Floating Badge & Icon */}
+                      <div className="absolute top-4 left-4 right-4 flex items-start justify-between">
+                        <div className={`w-10 h-10 rounded-xl ${project.iconBg} backdrop-blur-md flex items-center justify-center border border-white/10 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                          <Icon className={`w-5 h-5 ${project.iconColor}`} />
+                        </div>
+                        <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-white shadow-xl">
+                          {project.badge}
+                        </span>
                       </div>
-                      <span className="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-foreground/50">
-                        {project.badge}
-                      </span>
                     </div>
 
-                    {/* Title */}
-                    <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-white transition-colors">
-                      {project.title}
-                    </h3>
+                    <div className="flex flex-col flex-grow px-1">
+                      {/* Title */}
+                      <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-white transition-colors">
+                        {project.title}
+                      </h3>
 
                     {/* Short description */}
                     <p className="text-sm text-foreground/60 leading-relaxed mb-5 flex-grow group-hover:text-foreground/80 transition-colors">
@@ -200,7 +219,7 @@ export function PortfolioSection() {
                     </div>
 
                     {/* CTA Row */}
-                    <div className="flex items-center justify-between pt-4 border-t border-white/5">
+                    <div className="flex items-center justify-between pt-4 border-t border-white/5 mt-auto">
                       <span className="text-xs text-foreground/40 font-medium">{project.category}</span>
                       <span
                         className="flex items-center gap-1.5 text-xs font-semibold transition-all duration-300"
@@ -208,6 +227,7 @@ export function PortfolioSection() {
                       >
                         View PDF <ExternalLink className="w-3 h-3" />
                       </span>
+                    </div>
                     </div>
                   </div>
                 </SpotlightCard>

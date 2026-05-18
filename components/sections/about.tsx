@@ -222,7 +222,7 @@ export function AboutSection() {
               className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-10 h-12 text-base shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:scale-105 transition-all duration-300"
               onClick={() => scrollTo('contact')}
             >
-              ✉️ Get Started
+              Get Started
             </Button>
           </div>
         </motion.div>

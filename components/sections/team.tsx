@@ -11,16 +11,16 @@ const team = [
     name: 'Rahmat Eka Putra R Palaloi',
     role: 'Product Design',
     expertise: ['Product Design', 'UI/UX Design', 'System Analyst'],
-    quote: 'Future loading... Please don&apos;t turn off the enthusiasm',
+    quote: 'Future loading... Please don\'t turn off the enthusiasm',
     initials: 'REP',
     image: '/foto_ogitech/Putra_new.png',
-    linkedin: '#',
+    linkedin: 'https://www.linkedin.com/in/rahmat-eka-putra-007682371/',
   },
   {
     name: 'Muhammad Aldi Alfatih',
     role: 'AI & Mobile Engineer',
     expertise: ['AI Engineer', 'Mobile Development', 'Fullstack Developer'],
-    quote: 'I learned that if I hesitate, I won&apos;t get anything',
+    quote: "I learned that if I hesitate, I won't get anything",
     initials: 'MAA',
     image: '/foto_ogitech/Aldi_new.png',
     linkedin: 'https://www.linkedin.com/in/aldialfatih/',
@@ -32,7 +32,7 @@ const team = [
     quote: 'Be part of the future, not just a spectator.',
     initials: 'LH',
     image: '/foto_ogitech/Lukman_new.png',
-    linkedin: '#',
+    linkedin: 'https://www.linkedin.com/in/lukman-hakim-334838290/',
   },
   {
     name: 'Muhammad Anugrah',
@@ -41,7 +41,7 @@ const team = [
     quote: 'Be someone who takes on the future, not a coward who stays safe in their comfort zone',
     initials: 'MA',
     image: '/foto_ogitech/Anugrah_new.png',
-    linkedin: '#',
+    linkedin: 'https://www.linkedin.com/in/muhmmdanugrah/',
   },
   {
     name: 'Muhammad Alfian',
@@ -50,16 +50,16 @@ const team = [
     quote: 'What is lost today will be replaced by something better in the future',
     initials: 'MAL',
     image: '/foto_ogitech/Alfian_new.png',
-    linkedin: '#',
+    linkedin: 'https://id.linkedin.com/in/muh-alfian',
   },
   {
     name: 'Muhammad Rivaldi Jefri',
     role: 'IoT & Frontend',
     expertise: ['IoT Engineer', 'Frontend Developer', 'Robotic Engineering'],
-    quote: 'Keep moving forward, you don&apos;t have to be perfect.',
+    quote: "Keep moving forward, you don't have to be perfect.",
     initials: 'MRJ',
     image: '/foto_ogitech/Rivaldi_new.png',
-    linkedin: '#',
+    linkedin: 'https://www.linkedin.com/in/muhammad-rivaldi-jefri-a03212297?utm_source=share_via&utm_content=profile&utm_medium=member_android',
   },
 ]
 
@@ -105,6 +105,8 @@ export function TeamSection() {
                           src={member.image}
                           alt={member.name}
                           fill
+                          sizes="80px"
+                          loading="lazy"
                           className="object-cover"
                         />
                       ) : (

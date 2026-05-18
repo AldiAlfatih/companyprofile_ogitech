@@ -63,6 +63,8 @@ const TextPressure = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const spansRef = useRef<(HTMLSpanElement | null)[]>([]);
+  const spanCentersRef = useRef<{ x: number; y: number }[]>([]);
+  const titleWidthRef = useRef<number>(0);
 
   const mouseRef = useRef({ x: 0, y: 0 });
   const cursorRef = useRef({ x: 0, y: 0 });
@@ -75,13 +77,13 @@ const TextPressure = ({
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      cursorRef.current.x = e.clientX;
-      cursorRef.current.y = e.clientY;
+      cursorRef.current.x = e.pageX;
+      cursorRef.current.y = e.pageY;
     };
     const handleTouchMove = (e: TouchEvent) => {
       const t = e.touches[0];
-      cursorRef.current.x = t.clientX;
-      cursorRef.current.y = t.clientY;
+      cursorRef.current.x = t.pageX;
+      cursorRef.current.y = t.pageY;
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -89,8 +91,8 @@ const TextPressure = ({
 
     if (containerRef.current) {
       const { left, top, width, height } = containerRef.current.getBoundingClientRect();
-      mouseRef.current.x = left + width / 2;
-      mouseRef.current.y = top + height / 2;
+      mouseRef.current.x = left + width / 2 + window.scrollX;
+      mouseRef.current.y = top + height / 2 + window.scrollY;
       cursorRef.current.x = mouseRef.current.x;
       cursorRef.current.y = mouseRef.current.y;
     }
@@ -115,15 +117,27 @@ const TextPressure = ({
 
     requestAnimationFrame(() => {
       if (!titleRef.current) return;
-      const textRect = titleRef.current.getBoundingClientRect();
-
-      if (scale && textRect.height > 0) {
-        const yRatio = containerH / textRect.height;
-        setScaleY(yRatio);
-        setLineHeight(yRatio);
+      
+      if (scale) {
+        const textRect = titleRef.current.getBoundingClientRect();
+        if (textRect.height > 0) {
+          const yRatio = containerH / textRect.height;
+          setScaleY(yRatio);
+          setLineHeight(yRatio);
+        }
       }
+
+      // Reset cache so the animation loop recalculates it
+      titleWidthRef.current = 0;
     });
   }, [chars.length, minFontSize, scale]);
+  
+  // Also recalculate when fonts finish loading
+  useEffect(() => {
+    document.fonts.ready.then(() => {
+      titleWidthRef.current = 0;
+    });
+  }, []);
 
   useEffect(() => {
     const debouncedSetSize = debounce(setSize, 100);
@@ -139,17 +153,30 @@ const TextPressure = ({
       mouseRef.current.y += (cursorRef.current.y - mouseRef.current.y) / 15;
 
       if (titleRef.current) {
-        const titleRect = titleRef.current.getBoundingClientRect();
-        const maxDist = titleRect.width / 2;
+        // Recalculate cache if it's 0 (e.g. after resize or font load)
+        if (titleWidthRef.current === 0) {
+          const titleRect = titleRef.current.getBoundingClientRect();
+          if (titleRect.width > 0) {
+            titleWidthRef.current = titleRect.width;
+            spanCentersRef.current = spansRef.current.map(span => {
+              if (!span) return { x: 0, y: 0 };
+              const rect = span.getBoundingClientRect();
+              return { 
+                x: rect.x + rect.width / 2 + window.scrollX, 
+                y: rect.y + rect.height / 2 + window.scrollY 
+              };
+            });
+          }
+        }
 
-        spansRef.current.forEach(span => {
-          if (!span) return;
+        if (titleWidthRef.current > 0) {
+          const maxDist = titleWidthRef.current / 2;
 
-          const rect = span.getBoundingClientRect();
-          const charCenter = {
-            x: rect.x + rect.width / 2,
-            y: rect.y + rect.height / 2
-          };
+          spansRef.current.forEach((span, i) => {
+            if (!span) return;
+
+            const charCenter = spanCentersRef.current[i];
+            if (!charCenter) return;
 
           const d = dist(mouseRef.current, charCenter);
 
@@ -168,6 +195,7 @@ const TextPressure = ({
           }
         });
       }
+    }
 
       rafId = requestAnimationFrame(animate);
     };
@@ -246,7 +274,7 @@ const TextPressure = ({
         {chars.map((char, i) => (
           <span
             key={i}
-            ref={el => (spansRef.current[i] = el)}
+            ref={el => { spansRef.current[i] = el; }}
             data-char={char}
             style={{
               display: 'inline-block',

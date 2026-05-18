@@ -33,36 +33,52 @@ export default function MagnetLines({
     if (!container) return;
 
     const items = container.querySelectorAll('span') as NodeListOf<HTMLElement>;
+    let itemsData: { element: HTMLElement; centerX: number; centerY: number }[] = [];
+
+    const calculatePositions = () => {
+      itemsData = Array.from(items).map(item => {
+        const rect = item.getBoundingClientRect();
+        return {
+          element: item,
+          centerX: rect.x + rect.width / 2,
+          centerY: rect.y + rect.height / 2
+        };
+      });
+    };
+
+    // Calculate initial positions
+    calculatePositions();
 
     const onPointerMove = (pointer: { x: number; y: number }) => {
-      items.forEach(item => {
-        const rect = item.getBoundingClientRect();
-        const centerX = rect.x + rect.width / 2;
-        const centerY = rect.y + rect.height / 2;
-
+      itemsData.forEach(({ element, centerX, centerY }) => {
         const b = pointer.x - centerX;
         const a = pointer.y - centerY;
         const c = Math.sqrt(a * a + b * b) || 1;
         const r = ((Math.acos(b / c) * 180) / Math.PI) * (pointer.y > centerY ? 1 : -1);
 
-        item.style.setProperty('--rotate', `${r}deg`);
+        element.style.setProperty('--rotate', `${r}deg`);
       });
     };
 
     const handlePointerMove = (e: PointerEvent) => {
-      onPointerMove({ x: e.clientX, y: e.clientY });
+      // Use requestAnimationFrame to throttle the updates
+      requestAnimationFrame(() => {
+        onPointerMove({ x: e.clientX, y: e.clientY });
+      });
     };
 
     window.addEventListener('pointermove', handlePointerMove);
+    window.addEventListener('resize', calculatePositions);
 
-    if (items.length) {
-      const middleIndex = Math.floor(items.length / 2);
-      const rect = items[middleIndex].getBoundingClientRect();
-      onPointerMove({ x: rect.left, y: rect.top });
+    if (itemsData.length) {
+      const middleIndex = Math.floor(itemsData.length / 2);
+      const { centerX, centerY } = itemsData[middleIndex];
+      onPointerMove({ x: centerX, y: centerY });
     }
 
     return () => {
       window.removeEventListener('pointermove', handlePointerMove);
+      window.removeEventListener('resize', calculatePositions);
     };
   }, [rows, columns]);
 

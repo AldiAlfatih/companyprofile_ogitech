@@ -1,14 +1,33 @@
+import dynamic from 'next/dynamic'
 import { Navbar } from '@/components/navbar'
 import { HeroSection } from '@/components/sections/hero'
-import { AboutSection } from '@/components/sections/about'
-import { ServicesSection } from '@/components/sections/services'
-import { PortfolioSection } from '@/components/sections/portfolio'
-import { ProcessSection } from '@/components/sections/process'
-import { TeamSection } from '@/components/sections/team'
-import { TechStackSection } from '@/components/sections/tech-stack'
-import { ContactSection } from '@/components/sections/contact'
-import { FooterSection } from '@/components/sections/footer'
 import { Toaster } from 'sonner'
+
+// Lazy load semua section di bawah Hero — tidak perlu dimuat saat halaman pertama dibuka
+const PortfolioSection = dynamic(() =>
+  import('@/components/sections/portfolio').then(m => ({ default: m.PortfolioSection }))
+)
+const ServicesSection = dynamic(() =>
+  import('@/components/sections/services').then(m => ({ default: m.ServicesSection }))
+)
+const ProcessSection = dynamic(() =>
+  import('@/components/sections/process').then(m => ({ default: m.ProcessSection }))
+)
+const TeamSection = dynamic(() =>
+  import('@/components/sections/team').then(m => ({ default: m.TeamSection }))
+)
+const TechStackSection = dynamic(() =>
+  import('@/components/sections/tech-stack').then(m => ({ default: m.TechStackSection }))
+)
+const ContactSection = dynamic(() =>
+  import('@/components/sections/contact').then(m => ({ default: m.ContactSection }))
+)
+const AboutSection = dynamic(() =>
+  import('@/components/sections/about').then(m => ({ default: m.AboutSection }))
+)
+const FooterSection = dynamic(() =>
+  import('@/components/sections/footer').then(m => ({ default: m.FooterSection }))
+)
 
 export default function Home() {
   return (

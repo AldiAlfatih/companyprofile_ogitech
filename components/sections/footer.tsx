@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import TextPressure from '../ui/TextPressure/TextPressure'
-import { Github, Linkedin, Twitter, Mail } from 'lucide-react'
+import { Github, Linkedin, Instagram, Video, Mail } from 'lucide-react'
 
 export function FooterSection() {
   const currentYear = new Date().getFullYear()
@@ -15,10 +15,11 @@ export function FooterSection() {
   ]
 
   const socialLinks = [
+    { icon: Instagram, href: 'https://www.instagram.com/ogitech_/', label: 'Instagram' },
+    { icon: Video, href: 'https://www.tiktok.com/@ogitechofficial_', label: 'TikTok' },
+    { icon: Linkedin, href: '', label: 'LinkedIn' },
     { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Mail, href: '#', label: 'Email' },
+    { icon: Mail, href: 'mailto:ogitechofficial@gmail.com', label: 'Email' },
   ]
 
   return (

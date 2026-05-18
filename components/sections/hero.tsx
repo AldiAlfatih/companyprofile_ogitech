@@ -6,6 +6,7 @@ import BlurText from '../ui/BlurText/BlurText'
 import { AuroraBackground } from '../ui/aurora-background'
 import { motion } from 'motion/react'
 import { ArrowDown } from 'lucide-react'
+import Image from 'next/image'
 
 export function HeroSection() {
   const scrollTo = (id: string) => {
@@ -23,22 +24,48 @@ export function HeroSection() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-4 inline-block"
+            className="mb-4 w-full"
           >
             <p className="text-primary text-sm sm:text-base font-semibold tracking-[0.2em] uppercase mb-2 opacity-80">
               Welcome to
             </p>
-            <div className="relative h-10 sm:h-12 mb-2 w-full max-w-[250px] sm:max-w-[350px] mx-auto">
-              <TextPressure
-                text="OgiTech"
-                textColor="var(--primary)"
-                minFontSize={28}
-                flex={true}
-                weight={true}
-                width={true}
-                italic={false}
-                scale={false}
-              />
+            <div className="flex items-center justify-center gap-4 mb-2 max-w-lg mx-auto">
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                className="relative w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-primary shadow-lg shadow-primary/30 shrink-0"
+              >
+                <Image
+                  src="/jilat.png"
+                  alt="Jilat"
+                  fill
+                  className="object-cover"
+                />
+              </motion.div>
+              <div className="relative h-10 sm:h-12 w-full max-w-[200px] sm:max-w-[300px]">
+                <TextPressure
+                  text="OgiTech"
+                  textColor="var(--primary)"
+                  minFontSize={28}
+                  flex={true}
+                  weight={true}
+                  width={true}
+                  italic={false}
+                  scale={false}
+                />
+              </div>
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
+                className="relative w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-primary shadow-lg shadow-primary/30 shrink-0"
+              >
+                <Image
+                  src="/bori.png"
+                  alt="Bori"
+                  fill
+                  className="object-cover"
+                />
+              </motion.div>
             </div>
             <div className="h-1 w-16 bg-gradient-to-r from-primary/60 to-accent/60 mx-auto rounded-full"></div>
           </motion.div>

@@ -167,7 +167,7 @@ export function PortfolioSection() {
 
                   <div className="relative z-10 h-full flex flex-col">
                     {/* Image Header */}
-                    <div className="relative w-full h-48 sm:h-52 -mx-7 -mt-7 mb-6 overflow-hidden rounded-t-2xl border-b border-primary/10">
+                    <div className="relative w-[calc(100%+3.5rem)] h-48 sm:h-52 -mx-7 -mt-7 mb-6 overflow-hidden rounded-t-2xl border-b border-primary/10">
                       <Image 
                         src={project.image} 
                         alt={project.title} 
@@ -179,11 +179,8 @@ export function PortfolioSection() {
                       <div className={`absolute inset-0 bg-gradient-to-t ${project.gradient} opacity-50 mix-blend-multiply`} />
                       <div className="absolute inset-0 bg-gradient-to-t from-card/95 via-card/50 to-transparent" />
                       
-                      {/* Floating Badge & Icon */}
-                      <div className="absolute top-4 left-4 right-4 flex items-start justify-between">
-                        <div className={`w-10 h-10 rounded-xl ${project.iconBg} backdrop-blur-md flex items-center justify-center border border-white/10 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                          <Icon className={`w-5 h-5 ${project.iconColor}`} />
-                        </div>
+                      {/* Floating Badge */}
+                      <div className="absolute top-4 right-4">
                         <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-white shadow-xl">
                           {project.badge}
                         </span>

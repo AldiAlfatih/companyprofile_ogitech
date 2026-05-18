@@ -116,7 +116,7 @@ const ogiProjects = [
 export function PortfolioSection() {
 
   return (
-    <section id="portfolio" className="py-20 sm:py-32 bg-background relative overflow-hidden px-4 sm:px-6 lg:px-8">
+    <section id="portfolio" className="pt-10 pb-20 sm:pt-14 sm:pb-32 bg-background relative overflow-hidden px-4 sm:px-6 lg:px-8">
       {/* Subtle background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
 

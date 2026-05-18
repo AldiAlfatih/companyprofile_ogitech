@@ -14,8 +14,8 @@ export function HeroSection() {
   }
 
   return (
-    <section id="home" className="relative min-h-screen bg-background">
-      <AuroraBackground className="flex-col pt-24 pb-0 sm:pt-32">
+    <section id="home" className="relative min-h-[85vh] sm:min-h-[90vh] bg-background">
+      <AuroraBackground className="flex-col pt-20 pb-8 sm:pt-28 sm:pb-16 min-h-[85vh] sm:min-h-[90vh]">
 
 
         <div className="relative z-10 max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
@@ -71,7 +71,7 @@ export function HeroSection() {
           </motion.div>
 
           {/* Headline */}
-          <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-balance leading-[1.1] mb-6 flex flex-wrap justify-center text-white tracking-tight">
+          <div className="relative text-3xl sm:text-4xl lg:text-5xl font-extrabold text-balance leading-[1.1] mb-6 flex flex-wrap justify-center text-white tracking-tight w-full">
             <BlurText
               text="Engineering Digital Excellence with Precision AI &"
               delay={100}
@@ -88,6 +88,20 @@ export function HeroSection() {
                 className="inline-flex"
               />
             </span>
+
+            {/* Giant floating sunset sticker on the right margin */}
+            <motion.div
+              animate={{ y: [0, -12, 0], rotate: [0, 4, -2, 0] }}
+              transition={{ repeat: Infinity, duration: 4.8, ease: "easeInOut" }}
+              className="absolute right-[-10px] lg:right-[-60px] top-[40%] -translate-y-1/2 hidden md:block w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full overflow-hidden border-2 border-primary shadow-lg shadow-primary/30 shrink-0"
+            >
+              <Image
+                src="/sea.png"
+                alt="Sea"
+                fill
+                className="object-cover"
+              />
+            </motion.div>
           </div>
 
           <p className="text-lg sm:text-xl text-primary font-semibold mb-2 tracking-tight">

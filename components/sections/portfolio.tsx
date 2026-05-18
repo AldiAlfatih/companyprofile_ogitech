@@ -85,7 +85,7 @@ const ogiProjects = [
     iconColor: 'text-yellow-400',
     iconBg: 'bg-yellow-500/10',
     badge: 'GovTech',
-    link: 'https://drive.google.com/file/d/1ta-oW511dLGjrGzgd4UKkkE03TBR00pH/view?usp=sharing',
+    link: 'https://drive.google.com/file/d/1u8bygkt65VSuo-n6w4GH8XTgbL_AjNCk/view?usp=sharing',
   },
   {
     icon: MapPin,

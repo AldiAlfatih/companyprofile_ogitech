@@ -54,6 +54,7 @@ export function Navbar() {
                     src="/logo_ogitech_clean.jpg"
                     alt="OgiTech Logo"
                     fill
+                    sizes="64px"
                     className="object-contain p-1.5"
                     priority
                   />
